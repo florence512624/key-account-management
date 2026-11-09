@@ -1,5 +1,6 @@
 # Key Account Management · 大客户销售管理系统
 
+[![CI](https://github.com/florence512624/key-account-management/actions/workflows/ci.yml/badge.svg)](https://github.com/florence512624/key-account-management/actions/workflows/ci.yml)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
 ![Local First](https://img.shields.io/badge/deploy-local--only-informational)
@@ -429,7 +430,7 @@ npm test
 
 ## 开源协议
 
-[MIT](LICENSE) © 2026 cengying。
+[MIT](LICENSE) © 2026 florence512624。
 
 选 MIT 而不是 AGPL：这是个"拿走改成自己公司内部工具"的产品，限制越少越有用；如果哪天要做成 SaaS，再考虑换协议。
 
