@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   设计令牌：深蓝 + 灰白，商务侧。所有页面只从这里取色，改一处全站生效。
+   --------------------------------------------------------------- */
+@theme {
+  --font-sans: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+
+  --color-navy-950: #06101f;
+  --color-navy-900: #0a1a30;
+  --color-navy-850: #0d2140;
+  --color-navy-800: #11294c;
+  --color-navy-700: #17365c;
+  --color-navy-600: #1f4574;
+
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+
+  --color-canvas: #f4f6fa;
+  --color-hairline: #e6eaf1;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-canvas text-slate-800 font-sans;
+  }
+
+  ::selection {
+    @apply bg-brand-100 text-navy-900;
+  }
+
+  /* 细一点的滚动条，接近 Notion 观感 */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+}
+
+@layer components {
+  .surface {
+    @apply rounded-xl border border-hairline bg-white;
+  }
+
+  .surface-hover {
+    @apply transition duration-150 hover:border-slate-300 hover:shadow-[0_6px_20px_-12px_rgba(15,30,60,0.28)];
+  }
+
+  .field {
+    @apply w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800
+           placeholder:text-slate-400 outline-none transition
+           focus:border-brand-500 focus:ring-2 focus:ring-brand-100;
+  }
+
+  .label {
+    @apply mb-1.5 block text-xs font-medium text-slate-500;
+  }
+
+  /* Tailwind v4 不允许 @apply 自定义组件类，所以公共样式直接展开 */
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-3.5 py-2 text-sm font-medium
+           transition disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-3.5 py-2 text-sm font-medium
+           transition disabled:cursor-not-allowed disabled:opacity-50
+           bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-700
+           shadow-[0_1px_2px_rgba(15,30,60,0.12)];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-3.5 py-2 text-sm font-medium
+           transition disabled:cursor-not-allowed disabled:opacity-50
+           border border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium ring-1 ring-inset;
+  }
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(4px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-pop {
+  animation: pop-in 0.16s ease-out both;
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+.skeleton {
+  @apply relative overflow-hidden rounded-md bg-slate-100;
+}
+.skeleton::after {
+  content: "";
+  @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent;
+  animation: shimmer 1.4s infinite;
+}
