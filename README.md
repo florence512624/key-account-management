@@ -1,5 +1,9 @@
 # Key Account Management · 大客户销售管理系统
 
+![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
+![Local First](https://img.shields.io/badge/deploy-local--only-informational)
+
 React + Express + SQLite 的纯本地部署销售工作台。核心不是"又一个 CRM 表格"，而是把三件事串起来：
 
 1. **今天该做什么** —— 工作台把待办、逾期、高潜商机按优先级摆在一起；
@@ -20,6 +24,8 @@ React + Express + SQLite 的纯本地部署销售工作台。核心不是"又一
 ---
 
 ## 快速开始
+
+> ⚠️ 这是**本机单用户**系统：默认账号 `admin / admin123` 仅供本地演示。不要把它直接暴露到公网，详见 [CONTRIBUTING](CONTRIBUTING.md#安全)。
 
 ```bash
 cd ka-sales
@@ -418,6 +424,24 @@ npm test
 - `test/db.test.js`：外键开关真的打开了吗、删除客户是否级联、删联系人是否只置空、CHECK 是否拦住非法枚举、视图口径、触发器；
 - `test/ai.test.js`：围栏/废话/尾逗号/中文引号的 JSON 修复、字段别名归一、本地规则抽取、连不上 Ollama 时是否 `degraded` 而非抛错；
 - `test/api.test.js`：真实 HTTP 服务上的**未登录 401 / 错误密码不泄露账号 / Cookie 属性 / 登录后鉴权**、看板字段、筛选搜索、创建/重名/校验、决策链汇总变化、待办勾选、级联删除、**Excel 导出（反向用 exceljs 读回校验表结构与筛选生效）**、AI 降级留痕、改密后旧密码失效、登出即失效、404 契约。
+
+---
+
+## 开源协议
+
+[MIT](LICENSE) © 2026 cengying。
+
+选 MIT 而不是 AGPL：这是个"拿走改成自己公司内部工具"的产品，限制越少越有用；如果哪天要做成 SaaS，再考虑换协议。
+
+## 参与贡献
+
+欢迎 issue 与 PR，动手前请先看 [CONTRIBUTING.md](CONTRIBUTING.md)：里面有本地启动方式、测试要求（改行为就补测试）、代码风格（不写分号、注释写"为什么"）和 PR 清单。
+
+需要练手的点：
+
+- 客户详情页（跟进时间线 + 待办 + 商机进展合并到一屏）
+- 角色权限差异（`users.role` 已落库，但 admin / sales 目前看到的一样）
+- 图谱支持拖拽布局与汇报线
 
 ---
 
