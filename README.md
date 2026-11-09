@@ -1,6 +1,5 @@
 # Key Account Management · 大客户销售管理系统
 
-[![CI](https://github.com/florence512624/key-account-management/actions/workflows/ci.yml/badge.svg)](https://github.com/florence512624/key-account-management/actions/workflows/ci.yml)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
 ![Local First](https://img.shields.io/badge/deploy-local--only-informational)
